@@ -16,6 +16,7 @@
 import { fetchUserRepositories } from '@/api/ian-api'
 import { ref, onMounted, watch, toRefs, computed } from 'vue'
 import  getUsers from '@/composables/getUsers'
+import  searchFunction from '@/composables/searchFunction'
 export default {
 
   name: "Ian",
@@ -30,19 +31,16 @@ export default {
     const { repositories, getUserRepositories, userNames } = getUsers(users)
     //////////////////////////////////
 
-    const searchQuery = ref('')
-    const repositoriesMatchingSearchQuery = computed(() => {
-      return repositories.value.filter(
-        repository => repository.name.includes(searchQuery.value)
-      )
-    })
+    ////////////////////////
+    const { searchQuery, repositoriesMatchingSearchQuery } = searchFunction(repositories)
+    //////////////////
 
     return {
       repositories,
       getUserRepositories,
       searchQuery,
-      userNames
-      // repositoriesMatchingSearchQuery
+      userNames,
+      repositoriesMatchingSearchQuery
     }
   }
 };
