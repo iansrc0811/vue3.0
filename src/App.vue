@@ -1,6 +1,13 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <Ian msg="Welcome to Your Vue.js App" />
+
+  <input type="checkbox" value="ian1" v-model="users">
+<label for="data1">ian1</label>
+<input type="checkbox" value="ian2" v-model="users">
+<label for="data2">ian2</label>
+<input type="checkbox" value="ian3" v-model="users">
+<label for="data3">ian3</label>
+  <Ian msg="Welcome to Your Vue.js App" :users="users"/>
 
 </template>
 
@@ -12,6 +19,11 @@ export default {
   name: "App",
   components: {
     Ian
+  },
+  data () {
+    return {
+      users: ['Onead']
+    }
   }
   // components: {
   //   HelloWorld, Ian
